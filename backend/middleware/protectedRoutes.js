@@ -47,9 +47,9 @@ const usermiddleware=async(req,res,next)=>{
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
-      if (role !== "user") {
-        return res.status(401).json({ message: "Unauthorized access" });
-      }
+      // if (role !== "user") {
+      //   return res.status(401).json({ message: "Unauthorized access admin" });
+      // }
       req.user=user;
       console.log("user test passed");
       next();
