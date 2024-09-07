@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../db/db.js";
-import Bogie from "./bogie.models.js";
+
 
 const Seat=sequelize.define('Seat',{
     seatNumber:{
@@ -18,6 +18,4 @@ const Seat=sequelize.define('Seat',{
     }
 },{timestamps:true});
 
-Seat.belongsTo(Bogie,{foreignKey:'bogieId',as:'bogie'});
-Bogie.hasMany(Seat,{foreignKey:'bogieId',as:'seats'});
 export default Seat;

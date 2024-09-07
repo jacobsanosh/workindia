@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import {createConnections} from './db/db.js';
 import authRouter from './routes/auth.router.js';
 import trainRouter from './routes/train.router.js';
+import './models/associations.js'
 dotenv.config();
 const port=process.env.PORT||3000;
 
@@ -19,7 +20,12 @@ app.get('/',(req,res)=>{
 app.use('/auth/',authRouter)
 app.use('/train',trainRouter)
 // for user login
-app.listen(port,()=>{
-    createConnections();
-    console.log(`Server is running on port ${port}`);
-});
+createConnections()
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
+    });
+  })
+  .catch(err => {
+    console.error('Error starting the server:', err);
+  });
