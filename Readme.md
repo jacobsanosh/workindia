@@ -58,11 +58,12 @@ ADMIN_KEY=
 - auth/login
 - auth/register
 
+# to access the add route the admin has to pass the auth key in the header
 - train/add
 - train/availability
 - train/book
 - train/bookingsDetails
 
-# before that they have to login and then they have to pass the token in the header to add an train
+
 
 
