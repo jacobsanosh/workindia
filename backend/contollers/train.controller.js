@@ -43,4 +43,26 @@ const addTrain = async (req, res) => {
   }
 };
 
-export { addTrain };
+const getAvailability=async(req,res)=>{
+    try{
+      const {start,destination}=req.query;
+  
+      if(!start || !destination){
+        return res.status(400).json({message:"start and destination are required"});
+      }
+      const trains=await Train.findAll({
+        where:{
+          start,
+          destination
+        },
+      });
+      res.status(200).json({trains});
+    }
+    catch(err){
+      console.log("error on getting availability",err);
+      res.status(500).json({message:"Internal server error"});
+    }
+}
+
+
+export { addTrain,getAvailability };

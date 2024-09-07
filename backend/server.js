@@ -18,7 +18,7 @@ app.get('/',(req,res)=>{
 });
 app.use('/auth/',authRouter)
 app.use('/train',trainRouter)
-// for user login
+
 createConnections()
   .then(() => {
     app.listen(port, () => {
