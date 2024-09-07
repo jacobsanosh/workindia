@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import {createConnections} from './db/db.js';
 import authRouter from './routes/auth.router.js';
 import trainRouter from './routes/train.router.js';
+import cookieParser from 'cookie-parser';
 import './models/associations.js'
 dotenv.config();
 const port=process.env.PORT||3000;
@@ -10,9 +11,7 @@ const port=process.env.PORT||3000;
 const app=express();
 // setting middlewares
 app.use(express.json());
-
-// setting routes
-
+app.use(cookieParser());
 
 app.get('/',(req,res)=>{
     res.send('Hello World');
