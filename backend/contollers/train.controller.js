@@ -64,5 +64,15 @@ const getAvailability=async(req,res)=>{
     }
 }
 
+const bookTicket=async(req,res)=>{
+  try{
+    res.status(200).json({message:"booked the ticket"});
+  }
+  catch(err){
+    console.log("error on booking the ticket",err);
+    res.status(500).json({message:"Internal server error"});
+  }
+}
 
-export { addTrain,getAvailability };
+
+export { addTrain,getAvailability,bookTicket };
